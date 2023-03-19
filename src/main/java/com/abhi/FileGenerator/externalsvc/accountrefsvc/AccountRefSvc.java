@@ -19,7 +19,7 @@ public class AccountRefSvc {
     private URI uri;
 
     public AccountRefSvc() {
-        uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9008/accounts/").build().toUri();
+        uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9010/accounts/").build().toUri();
     }
 
     public List<AccountDTO> getAccounts() {

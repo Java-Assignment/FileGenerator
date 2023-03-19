@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Validated
 @Tag(name = "File Generation API", description = "API for all filegeneration related operations")
 public interface FileGeneratorController {
-    @PostMapping("/file")
+    @PostMapping
     @Operation(summary = "File generation API")
     ResponseEntity<Object> createAcFile(String fileName) throws AccoutFileGenException;
 }

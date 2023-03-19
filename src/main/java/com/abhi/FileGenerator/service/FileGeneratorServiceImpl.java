@@ -4,6 +4,7 @@ import com.abhi.FileGenerator.externalsvc.accountrefsvc.AccountRefSvc;
 import com.abhi.FileGenerator.externalsvc.accountrefsvc.dto.AccountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 
+@Service
 public class FileGeneratorServiceImpl implements FileGeneratorService {
     @Autowired
     private AccountRefSvc accountRefSvc;
