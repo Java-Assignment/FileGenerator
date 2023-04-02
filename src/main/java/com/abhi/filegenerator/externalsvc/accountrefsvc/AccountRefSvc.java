@@ -1,6 +1,6 @@
-package com.abhi.FileGenerator.externalsvc.accountrefsvc;
+package com.abhi.filegenerator.externalsvc.accountrefsvc;
 
-import com.abhi.FileGenerator.externalsvc.accountrefsvc.dto.AccountDTO;
+import com.abhi.filegenerator.externalsvc.accountrefsvc.dto.AccountDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,7 +37,7 @@ public class AccountRefSvc {
                 )
                 .collectList()
                 .block();
-        log.info("AccountSvcWebClient GET AC size:" + accountDTOList.size());
+        log.info("List of accounts size:" + accountDTOList.size());
         return accountDTOList;
     }
 

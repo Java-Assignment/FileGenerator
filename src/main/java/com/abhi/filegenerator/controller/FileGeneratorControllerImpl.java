@@ -1,7 +1,8 @@
-package com.abhi.FileGenerator.controller;
+package com.abhi.filegenerator.controller;
 
-import com.abhi.FileGenerator.exception.AccoutFileGenException;
-import com.abhi.FileGenerator.service.FileGeneratorService;
+import com.abhi.filegenerator.dto.FileDTO;
+import com.abhi.filegenerator.exception.AccoutFileGenException;
+import com.abhi.filegenerator.service.FileGeneratorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -26,11 +27,11 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
     private FileGeneratorService fileGeneratorService;
 
     @Override
-    public ResponseEntity<Object> createAcFile(String Filename) throws AccoutFileGenException {
+    public ResponseEntity<Object> createAcFile(FileDTO fileDTO) throws AccoutFileGenException {
         try {
-            String acFile = fileGeneratorService.createAcFile(Filename);
+            String acFile = fileGeneratorService.createAcFile(fileDTO);
             String[] split = acFile.split("/");
-            String fileName = split[split.length - 1];
+            String filename = split[split.length - 1];
             Path path = Paths.get("file://" + acFile);
             InputStream inputStream = Files.newInputStream(path, StandardOpenOption.READ);
             InputStreamResource resource = new InputStreamResource(inputStream);
@@ -40,7 +41,7 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
             headers.add(HttpHeaders.PRAGMA, "no-cache");
             headers.add(HttpHeaders.EXPIRES, "0");
             headers.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + fileName + "\"");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + filename + "\"");
             return new ResponseEntity<>(resource, headers, HttpStatus.OK);
 
 
@@ -50,4 +51,5 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
             throw new AccoutFileGenException(msg);
         }
     }
+
 }
