@@ -8,4 +8,6 @@ import java.io.IOException;
 public interface FileGeneratorService {
 
     public String createAcFile(FileDTO fileDTO) throws IOException;
+
+    FileDTO add(FileDTO fileDTO) throws IOException;
 }

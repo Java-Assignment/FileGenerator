@@ -8,15 +8,26 @@ import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping(value = "/file", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+import java.io.IOException;
+
+@RequestMapping(value = "/files", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 @Validated
 @Tag(name = "File Generation API", description = "API for all filegeneration related operations")
 public interface FileGeneratorController {
+
     @PostMapping
+    @Operation(summary = "Save file config in database")
+    ResponseEntity<FileDTO> add(@RequestBody @Valid FileDTO fileDTO) throws IOException, AccoutFileGenException;
+
+
+
+
+    @GetMapping("/file")
     @Operation(summary = "File generation API")
-    ResponseEntity<Object> createAcFile(@RequestBody @Valid FileDTO fileDTO) throws AccoutFileGenException;
+    ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws AccoutFileGenException;
 }

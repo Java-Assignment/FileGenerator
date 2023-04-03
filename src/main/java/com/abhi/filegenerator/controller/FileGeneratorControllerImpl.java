@@ -27,12 +27,19 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
     private FileGeneratorService fileGeneratorService;
 
     @Override
-    public ResponseEntity<Object> createAcFile(FileDTO fileDTO) throws AccoutFileGenException {
+    public ResponseEntity<FileDTO> add(FileDTO fileDTO) throws IOException, AccoutFileGenException {
+        FileDTO fileDTO1=fileGeneratorService.add(fileDTO);
+        generateFile(fileDTO1);
+        return new ResponseEntity<>(fileDTO1,HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws AccoutFileGenException {
         try {
-            String acFile = fileGeneratorService.createAcFile(fileDTO);
-            String[] split = acFile.split("/");
+            String acFile = fileGeneratorService.createAcFile(fileDTO1);
+            String[] split = acFile.split("\\\\");
             String filename = split[split.length - 1];
-            Path path = Paths.get("file://" + acFile);
+            Path path = Paths.get(acFile);
             InputStream inputStream = Files.newInputStream(path, StandardOpenOption.READ);
             InputStreamResource resource = new InputStreamResource(inputStream);
 
