@@ -1,4 +1,4 @@
-package com.abhi.filegenerator.common.vo;
+package com.abhi.filegenerator.common;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

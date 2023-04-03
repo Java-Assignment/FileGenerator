@@ -1,4 +1,4 @@
-package com.abhi.filegenerator.common.vo;
+package com.abhi.filegenerator.common;
 
 public enum AccountType {
     SAVING, CURRENT
