@@ -1,7 +1,7 @@
-package com.abhi.filegenerator.mapper;
+package com.abhi.FileGenerator.mapper;
 
-import com.abhi.filegenerator.dto.FileDTO;
-import com.abhi.filegenerator.entity.File;
+import com.abhi.FileGenerator.dto.FileDTO;
+import com.abhi.FileGenerator.entity.File;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring") 

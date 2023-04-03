@@ -1,4 +1,4 @@
-package com.abhi.filegenerator.common;
+package com.abhi.FileGenerator.vo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Weekly {
-    private int DayOfWeek;
-    private int minutes;
-
+    private int dayOfWeek;
     private int hour;
+    private int minutes;
 }
-

@@ -1,8 +1,8 @@
-package com.abhi.filegenerator.controller;
+package com.abhi.FileGenerator.controller;
 
-import com.abhi.filegenerator.dto.FileDTO;
-import com.abhi.filegenerator.exception.AccoutFileGenException;
-import com.abhi.filegenerator.service.FileGeneratorService;
+import com.abhi.FileGenerator.dto.FileDTO;
+import com.abhi.FileGenerator.exception.AccountFileGenException;
+import com.abhi.FileGenerator.service.FileGeneratorService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -27,14 +27,14 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
     private FileGeneratorService fileGeneratorService;
 
     @Override
-    public ResponseEntity<FileDTO> add(FileDTO fileDTO) throws IOException, AccoutFileGenException {
+    public ResponseEntity<FileDTO> add(FileDTO fileDTO) throws IOException, AccountFileGenException {
         FileDTO fileDTO1=fileGeneratorService.add(fileDTO);
         generateFile(fileDTO1);
         return new ResponseEntity<>(fileDTO1,HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws AccoutFileGenException {
+    public ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws AccountFileGenException {
         try {
             String acFile = fileGeneratorService.createAcFile(fileDTO1);
             String[] split = acFile.split("\\\\");
@@ -54,8 +54,9 @@ public class FileGeneratorControllerImpl implements FileGeneratorController {
 
         } catch (IOException e) {
             String msg = "Account file creation failed";
+            e.printStackTrace();
             log.error(msg);
-            throw new AccoutFileGenException(msg);
+            throw new AccountFileGenException(msg);
         }
     }
 

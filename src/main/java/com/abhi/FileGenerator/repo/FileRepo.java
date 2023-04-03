@@ -1,6 +1,6 @@
-package com.abhi.filegenerator.repo;
+package com.abhi.FileGenerator.repo;
 
-import com.abhi.filegenerator.entity.File;
+import com.abhi.FileGenerator.entity.File;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

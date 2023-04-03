@@ -1,6 +1,6 @@
-package com.abhi.filegenerator.service;
+package com.abhi.FileGenerator.service;
 
-import com.abhi.filegenerator.dto.FileDTO;
+import com.abhi.FileGenerator.dto.FileDTO;
 
 import java.io.IOException;
 

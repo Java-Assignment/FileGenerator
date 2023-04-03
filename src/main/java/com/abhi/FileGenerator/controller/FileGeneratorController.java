@@ -1,7 +1,7 @@
-package com.abhi.filegenerator.controller;
+package com.abhi.FileGenerator.controller;
 
-import com.abhi.filegenerator.dto.FileDTO;
-import com.abhi.filegenerator.exception.AccoutFileGenException;
+import com.abhi.FileGenerator.dto.FileDTO;
+import com.abhi.FileGenerator.exception.AccountFileGenException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -22,12 +22,12 @@ public interface FileGeneratorController {
 
     @PostMapping
     @Operation(summary = "Save file config in database")
-    ResponseEntity<FileDTO> add(@RequestBody @Valid FileDTO fileDTO) throws IOException, AccoutFileGenException;
+    ResponseEntity<FileDTO> add(@RequestBody @Valid FileDTO fileDTO) throws IOException, AccountFileGenException;
 
 
 
 
     @GetMapping("/file")
     @Operation(summary = "File generation API")
-    ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws AccoutFileGenException;
+    ResponseEntity<Object> generateFile(FileDTO fileDTO1) throws  AccountFileGenException;
 }

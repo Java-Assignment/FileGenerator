@@ -1,4 +1,4 @@
-package com.abhi.filegenerator;
+package com.abhi.FileGenerator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

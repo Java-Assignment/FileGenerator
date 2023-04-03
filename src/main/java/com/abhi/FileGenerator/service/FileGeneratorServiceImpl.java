@@ -1,11 +1,12 @@
-package com.abhi.filegenerator.service;
+package com.abhi.FileGenerator.service;
 
-import com.abhi.filegenerator.dto.FileDTO;
-import com.abhi.filegenerator.entity.File;
-import com.abhi.filegenerator.externalsvc.accountrefsvc.AccountRefSvc;
-import com.abhi.filegenerator.externalsvc.accountrefsvc.dto.AccountDTO;
-import com.abhi.filegenerator.mapper.FileMapper;
-import com.abhi.filegenerator.repo.FileRepo;
+import com.abhi.FileGenerator.dto.FileDTO;
+import com.abhi.FileGenerator.entity.File;
+
+import com.abhi.FileGenerator.externalsvc.Accountsvc;
+import com.abhi.FileGenerator.mapper.FileMapper;
+import com.abhi.FileGenerator.repo.FileRepo;
+import com.abhi.FileGenerator.vo.AccountDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,8 @@ import java.util.List;
 @Service
 public class FileGeneratorServiceImpl implements FileGeneratorService {
     @Autowired
-    private AccountRefSvc accountRefSvc;
+    private Accountsvc accountsvc;
+
     @Autowired
     private FileMapper fileMapper;
     @Autowired
@@ -32,7 +34,7 @@ public class FileGeneratorServiceImpl implements FileGeneratorService {
 
     @Override
     public String createAcFile(FileDTO fileDTO) throws IOException {
-        List<AccountDTO> accountDTOList = accountRefSvc.getAccounts();
+        List<AccountDTO> accountDTOList = accountsvc.getAccounts();
         String filePath = file_report_url +fileDTO.getFileName() ;
         Path path = Paths.get(URI.create(filePath));
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.CREATE_NEW)) {

@@ -1,6 +1,6 @@
-package com.abhi.filegenerator.externalsvc.accountrefsvc;
+package com.abhi.FileGenerator.externalsvc;
 
-import com.abhi.filegenerator.externalsvc.accountrefsvc.dto.AccountDTO;
+import com.abhi.FileGenerator.vo.AccountDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,14 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class AccountRefSvc {
+public class Accountsvc {
     @Autowired
     private WebClient.Builder webClientBuilder;
     private URI uri;
 
-    public AccountRefSvc() {
+    public Accountsvc() {
         uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9010/accounts/").build().toUri();
+
     }
 
     public List<AccountDTO> getAccounts() {
@@ -40,5 +41,4 @@ public class AccountRefSvc {
         log.info("List of accounts size:" + accountDTOList.size());
         return accountDTOList;
     }
-
 }

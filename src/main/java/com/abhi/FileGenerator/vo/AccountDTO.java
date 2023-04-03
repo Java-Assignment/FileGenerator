@@ -1,14 +1,10 @@
-package com.abhi.filegenerator.externalsvc.accountrefsvc.dto;
+package com.abhi.FileGenerator.vo;
 
-import com.abhi.filegenerator.common.AccountStatus;
-import com.abhi.filegenerator.common.AccountType;
-import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Data
 public class AccountDTO {
     private String accountId;
     private AccountType accountType;
@@ -18,5 +14,4 @@ public class AccountDTO {
     private String region;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate createDate;
-
 }

@@ -1,8 +1,7 @@
-package com.abhi.filegenerator.common;
+package com.abhi.FileGenerator.vo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @NoArgsConstructor
