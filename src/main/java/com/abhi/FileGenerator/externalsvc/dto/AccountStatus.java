@@ -1,4 +1,4 @@
-package com.abhi.FileGenerator.vo;
+package com.abhi.FileGenerator.externalsvc.dto;
 
 public enum AccountStatus {
     ACTIVE, BLOCKED, CURRENT

@@ -1,9 +1,6 @@
 package com.abhi.FileGenerator.dto;
 
 
-import com.abhi.FileGenerator.vo.Daily;
-import com.abhi.FileGenerator.vo.Monthly;
-import com.abhi.FileGenerator.vo.Weekly;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,6 +1,6 @@
 package com.abhi.FileGenerator.externalsvc;
 
-import com.abhi.FileGenerator.vo.AccountDTO;
+import com.abhi.FileGenerator.externalsvc.dto.AccountDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,12 +13,12 @@ import java.util.List;
 
 @Component
 @Slf4j
-public class Accountsvc {
+public class AccountSvc {
     @Autowired
     private WebClient.Builder webClientBuilder;
     private URI uri;
 
-    public Accountsvc() {
+    public AccountSvc() {
         uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9010/accounts").build().toUri();
 
     }

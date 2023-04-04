@@ -1,10 +1,12 @@
-package com.abhi.FileGenerator.vo;
+package com.abhi.FileGenerator.externalsvc.dto;
 
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Data
 public class AccountDTO {
     private String accountId;
     private AccountType accountType;
