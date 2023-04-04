@@ -12,14 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@Slf4j
 public class FileGeneratorControllerImpl implements FileGeneratorController {
 
     @Autowired
-    private FileGeneratorService fileGeneratorService;
+    FileGeneratorService fileGeneratorService;
 
     @Override
-    public ResponseEntity<Void> generateFile(FileDTO fileDTO) throws IOException, AccountFileGenException {
+    public ResponseEntity<Void> generateFile(FileDTO fileDTO) throws IOException {
         fileGeneratorService.generateFile(fileDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }

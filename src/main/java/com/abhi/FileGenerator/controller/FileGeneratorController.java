@@ -16,11 +16,11 @@ import java.io.IOException;
 
 @RequestMapping(value = "/files", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 @Validated
-@Tag(name = "File Generation API", description = "API for all filegeneration related operations")
+@Tag(name = "File Generation API", description = "API for all fileGeneration related operations")
 public interface FileGeneratorController {
 
     @PostMapping
     @Operation(summary = "Generate File")
-    ResponseEntity<Void> generateFile(@RequestBody @Valid FileDTO fileDTO) throws IOException, AccountFileGenException;
+    ResponseEntity<Void> generateFile(@RequestBody @Valid FileDTO fileDTO) throws IOException;
 
 }
