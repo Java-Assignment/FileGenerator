@@ -19,7 +19,7 @@ public class Accountsvc {
     private URI uri;
 
     public Accountsvc() {
-        uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9010/accounts/").build().toUri();
+        uri = UriComponentsBuilder.fromHttpUrl("http://localhost:9010/accounts").build().toUri();
 
     }
 
@@ -27,6 +27,7 @@ public class Accountsvc {
         WebClient webClient = webClientBuilder.build();
 
         List<AccountDTO> accountDTOList = webClient.get()
+                .uri(uri)
                 .exchangeToFlux(
                         response -> {
                             if (response.statusCode().is2xxSuccessful()) {
@@ -39,6 +40,7 @@ public class Accountsvc {
                 .collectList()
                 .block();
         log.info("List of accounts size:" + accountDTOList.size());
+        log.info(accountDTOList.toString());
         return accountDTOList;
     }
 }

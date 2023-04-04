@@ -7,6 +7,7 @@ import com.abhi.FileGenerator.externalsvc.Accountsvc;
 import com.abhi.FileGenerator.mapper.FileMapper;
 import com.abhi.FileGenerator.repo.FileRepo;
 import com.abhi.FileGenerator.vo.AccountDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 @Service
+@Slf4j
 public class FileGeneratorServiceImpl implements FileGeneratorService {
     @Autowired
     private Accountsvc accountsvc;
@@ -36,12 +38,18 @@ public class FileGeneratorServiceImpl implements FileGeneratorService {
     public String createAcFile(FileDTO fileDTO) throws IOException {
         List<AccountDTO> accountDTOList = accountsvc.getAccounts();
         String filePath = file_report_url +fileDTO.getFileName() ;
-        Path path = Paths.get(URI.create(filePath));
+        Path path = Paths.get(filePath);
+        if(Files.exists(path)){
+            Files.delete(path);
+        }
         try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.CREATE_NEW)) {
             for (AccountDTO accountDTO : accountDTOList) {
-                bufferedWriter.write(accountDTO.toString());
-            }
 
+                    log.info("the information of the accounts is");
+                    bufferedWriter.write(accountDTO.toString());
+                    bufferedWriter.write(System.lineSeparator());
+                    bufferedWriter.flush();
+                }
         }
         return filePath;
 
